@@ -13,7 +13,9 @@ export class HeaderComponent implements OnInit {
   screenWidth: number = window.innerWidth;
   isMenuOpen: boolean = this.headerService.getMenuState();
   isCartListOpen: boolean = this.headerService.getCartState();
+  isRemoveMenuOpen: boolean = this.headerService.getRemoveState();
   links: LinkHeader[] = this.headerService.getLinks();
+  confirmRemove: boolean = this.headerService.getConfirmRemove();
   shoppingCart: Product[] = [];
   counter: number = 0;
   @HostListener('window:resize', ['$event'])
@@ -46,5 +48,17 @@ export class HeaderComponent implements OnInit {
   changeActiveLink(i: number) {
     this.headerService.changeActiveLink(i);
     this.links = this.headerService.getLinks();
+  }
+
+  toggleRemoveMenu() {
+    this.headerService.toggleRemoveMenu();
+    this.isRemoveMenuOpen = this.headerService.getRemoveState();
+    console.log(this.isRemoveMenuOpen);
+  }
+
+  onRemoveFromShoppingCart(product: Product) {
+    if (this.confirmRemove) {
+      this.storeService.removeFromShoppingCart(product);
+    }
   }
 }

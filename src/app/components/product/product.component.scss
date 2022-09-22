@@ -8,13 +8,14 @@
   border: 1px solid var(--hospital-green);
   border-radius: 1rem;
   font-family: var(--ff-main);
+  text-align: center;
   &_name {
     margin: 1.5rem 0;
     font-size: var(--fs-medium);
     font-weight: var(--fw-medium);
   }
   &_tag {
-    margin-bottom: 1.5rem;
+    margin: 1.5rem 0;
     padding: 1rem;
     border: 1px solid var(--hospital-green);
     border-radius: 1.5rem;
