@@ -1,0 +1,24 @@
+<div class="product">
+  <h2 class="product_name">{{ product.title }}</h2>
+  <p class="product_tag">{{ product.tag }}</p>
+  <app-image [setSrc]="product.image" [alt]="product.title"></app-image>
+  <p class="product_price">{{ product.price | currency: "USD" }}</p>
+  <p class="product_description">{{ product.description }}</p>
+  <p class="product_remaining">Remaining units: {{ product.quantityLeft }}</p>
+  <div class="product_buttons">
+    <button
+      class="product_buttons_element button--add"
+      (click)="addToShoppingCart()"
+      [disabled]="isProductAvailable"
+    >
+      Add to shopping cart
+    </button>
+    <button
+      class="product_buttons_element button--remove"
+      (click)="removeFromShoppingCart()"
+      [disabled]="isProductRemovable"
+    >
+      Remove from shopping cart
+    </button>
+  </div>
+</div>

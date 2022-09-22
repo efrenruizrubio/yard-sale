@@ -1,0 +1,73 @@
+<header class="header">
+  <aside
+    *ngIf="screenWidth < 768"
+    class="header__aside aside-right"
+    [class.nav-open]="isMenuOpen"
+  >
+    <nav class="header__nav nav-left">
+      <ul class="header__nav__list">
+        <li
+          class="header__nav__list__element"
+          *ngFor="let link of links; index as i"
+        >
+          <button
+            class="header__nav__list__element__button"
+            [class.active]="link.active"
+            (click)="changeActiveLink(i)"
+          >
+            {{ link.name }}
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <button class="header__aside__button" (click)="toggleMenu()"></button>
+  </aside>
+  <button *ngIf="screenWidth < 768" class="nav-toggle" (click)="toggleMenu()">
+    <span [class.nav-open]="isMenuOpen" class="hamburger"></span>
+  </button>
+  <a href=""
+    ><img src="/assets/icons/logo_yard_sale.svg" alt="Yard Sale logo"
+  /></a>
+  <nav *ngIf="screenWidth >= 768">
+    <ul class="header__nav__list">
+      <li
+        class="header__nav__list__element"
+        *ngFor="let link of links; index as i"
+      >
+        <button
+          class="header__nav__list__element__button"
+          [class.active]="link.active"
+          (click)="changeActiveLink(i)"
+        >
+          {{ link.name }}
+        </button>
+      </li>
+    </ul>
+  </nav>
+  <span *ngIf="screenWidth >= 1024" class="header__user"
+    >efren282@outlook.es</span
+  >
+  <aside class="header__aside aside-left" [class.nav-open]="isCartListOpen">
+    <nav class="cart__list">
+      <div>
+        <h2 class="cart__list__title">My cart</h2>
+        <h3 class="cart__list__status" *ngIf="!shoppingCart.length">
+          Your cart is empty.
+        </h3>
+      </div>
+      <div class="cart__list__element" *ngFor="let product of shoppingCart">
+        <app-image [setSrc]="product.image"></app-image>
+      </div>
+    </nav>
+    <button class="header__aside__button" (click)="toggleCartList()"></button>
+  </aside>
+  <div class="cart" [class.nav-open]="isMenuOpen">
+    <button class="cart__button" (click)="toggleCartList()">
+      <img
+        src="/assets/icons/icon_shopping_cart.svg"
+        alt="Shopping cart logo"
+      />
+    </button>
+    <span class="counter">{{ counter }}</span>
+  </div>
+</header>
