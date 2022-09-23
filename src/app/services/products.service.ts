@@ -9,6 +9,7 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getAllProducts() {
-    return this.http.get<Product[]>('https://fakestoreapi.com/products');
+    return this.http.get<Product[]>('https://api.escuelajs.co/api/v1/products');
+    // return this.http.get<Product[]>('https://fakestoreapi.com/products');
   }
 }

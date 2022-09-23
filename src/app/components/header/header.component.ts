@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   isCartListOpen: boolean = this.headerService.getCartState();
   isRemoveMenuOpen: boolean = this.headerService.getRemoveState();
   links: LinkHeader[] = this.headerService.getLinks();
-  confirmRemove: boolean = this.headerService.getConfirmRemove();
+  index: number = this.headerService.getIndex();
   shoppingCart: Product[] = [];
   counter: number = 0;
   @HostListener('window:resize', ['$event'])
@@ -56,9 +56,14 @@ export class HeaderComponent implements OnInit {
     console.log(this.isRemoveMenuOpen);
   }
 
-  onRemoveFromShoppingCart(product: Product) {
-    if (this.confirmRemove) {
-      this.storeService.removeFromShoppingCart(product);
-    }
+  setIndex(index: number) {
+    this.headerService.setIndex(index);
+    this.index = this.headerService.getIndex();
+  }
+
+  onRemoveFromShoppingCart() {
+    const product = this.shoppingCart[this.index];
+    this.storeService.removeFromShoppingCart(product);
+    this.toggleRemoveMenu();
   }
 }

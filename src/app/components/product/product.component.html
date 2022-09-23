@@ -1,7 +1,7 @@
 <div class="product">
   <h2 class="product_name">{{ product.title }}</h2>
   <p class="product_tag">{{ product.tag }}</p>
-  <app-image [setSrc]="product.image" [alt]="product.title"></app-image>
+  <app-image [setSrc]="product.images[0]" [alt]="product.title"></app-image>
   <p class="product_price">{{ product.price | currency: "USD" }}</p>
   <p class="product_description">{{ product.description }}</p>
   <p class="product_remaining">Remaining units: {{ product.quantityLeft }}</p>

@@ -10,10 +10,10 @@ export class AppComponent implements OnInit {
   isAnyMenuOpen: boolean = false;
 
   constructor(private headerService: HeaderService) {
-    this.headerService.isMenuOpen$.subscribe((value) => {
+    this.headerService.MenuOpen$.subscribe((value) => {
       value ? (this.isAnyMenuOpen = true) : (this.isAnyMenuOpen = false);
     });
-    this.headerService.isCartListOpen$.subscribe((value) => {
+    this.headerService.CartListOpen$.subscribe((value) => {
       value ? (this.isAnyMenuOpen = true) : (this.isAnyMenuOpen = false);
     });
   }

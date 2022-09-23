@@ -99,6 +99,7 @@
         align-items: center;
         flex-direction: column;
         border: 1px solid var(--hospital-green);
+        border-radius: 1.5rem;
         &__name {
           margin: 1.5rem 0;
           text-align: center;
@@ -114,20 +115,62 @@
           color: var(--hospital-green);
           cursor: pointer;
           &:hover {
-            color: red;
+            color: var(--remove);
           }
         }
         &__modal {
           display: none;
           position: fixed;
           inset: 0;
+          padding: 0 2rem;
           &.active {
             display: flex;
-            width: 50%;
-            margin: 0 auto;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+          }
+          &__button {
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+            background: transparent;
+            border: none;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+          }
+          &__popup {
+            display: flex;
+            padding: 2rem;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--dark);
+            color: var(--white);
+            z-index: 3;
+            &__title {
+              font-size: var(--fs-big);
+            }
+            &__description {
+              font-size: var(--fs-small);
+              margin: 1.5rem 0;
+            }
+            &__buttons {
+              display: flex;
+              gap: 1rem;
+              &__button {
+                padding: 1rem 2rem;
+                border: none;
+                font-family: var(--ff-main);
+                font-size: var(--fs-medium);
+                color: var(--white);
+                cursor: pointer;
+                &.button--yes {
+                  background-color: var(--remove);
+                }
+                &.button--no {
+                  background-color: var(--hospital-green);
+                }
+              }
+            }
           }
         }
       }
