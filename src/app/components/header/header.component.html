@@ -22,10 +22,15 @@
     </nav>
     <button class="header__button" (click)="toggleMenu()"></button>
   </aside>
-  <button *ngIf="screenWidth < 768" class="nav-toggle" (click)="toggleMenu()">
+  <button
+    *ngIf="screenWidth < 768"
+    class="nav-toggle"
+    aria-label="Open menu"
+    (click)="toggleMenu()"
+  >
     <span [class.nav-open]="isMenuOpen" class="hamburger"></span>
   </button>
-  <a href=""
+  <a href="/"
     ><img src="/assets/icons/logo_yard_sale.svg" alt="Yard Sale logo"
   /></a>
   <nav *ngIf="screenWidth >= 768">
