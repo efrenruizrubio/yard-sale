@@ -34,15 +34,13 @@ export class ListProductsComponent implements OnInit {
           ];
         element['tag'] = randomTag.name;
       });
-      this.products = data;
+      this.products = data.splice(0, 20);
       this.storeService.setProducts(data);
     });
     this.headerService.activeLink$.subscribe((data) => {
       this.filteredProducts = this.products.filter((product) => {
         return product.tag === data;
       });
-      console.log(this.filteredProducts.length);
-      console.log(this.products.length);
     });
   }
 
