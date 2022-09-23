@@ -3,6 +3,7 @@ import { Product } from '@models/product.model';
 import { ProductsService } from '@services/products.service';
 import { HeaderService } from '@services/header.service';
 import { StoreService } from '@services/store.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-list-products',
@@ -11,6 +12,7 @@ import { StoreService } from '@services/store.service';
 })
 export class ListProductsComponent implements OnInit {
   products: Product[] = [];
+  filteredProducts: Product[] = [];
   shoppingCart: Product[] = [];
   total: number = 0;
   constructor(
@@ -28,12 +30,19 @@ export class ListProductsComponent implements OnInit {
         const linksLength = this.headerService.getLinks().length;
         const randomTag =
           this.headerService.getLinks()[
-            Math.floor(Math.random() * linksLength)
+            1 + Math.floor(Math.random() * (linksLength - 1))
           ];
         element['tag'] = randomTag.name;
       });
       this.products = data;
       this.storeService.setProducts(data);
+    });
+    this.headerService.activeLink$.subscribe((data) => {
+      this.filteredProducts = this.products.filter((product) => {
+        return product.tag === data;
+      });
+      console.log(this.filteredProducts.length);
+      console.log(this.products.length);
     });
   }
 

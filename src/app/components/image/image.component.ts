@@ -9,7 +9,6 @@ export class ImageComponent implements OnInit {
   src: string = '';
   @Input() set setSrc(img: string) {
     this.src = img;
-    console.log(`Image has been setted with ${img}`);
   }
 
   @Input() alt: string = '';

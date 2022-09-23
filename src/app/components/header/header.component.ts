@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, Output } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { LinkHeader } from '@models/linkHeader.model';
 import { HeaderService } from '@services/header.service';
 import { StoreService } from '@services/store.service';
@@ -48,6 +48,7 @@ export class HeaderComponent implements OnInit {
   changeActiveLink(i: number) {
     this.headerService.changeActiveLink(i);
     this.links = this.headerService.getLinks();
+    this.toggleMenu();
   }
 
   toggleRemoveMenu() {

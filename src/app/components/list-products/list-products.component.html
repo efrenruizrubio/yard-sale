@@ -1,10 +1,23 @@
 <div class="products">
-  <app-product
-    *ngFor="let product of products"
-    [product]="product"
-    (addProduct)="onAddToShoppingCart($event)"
-    (removeProduct)="onRemoveFromShoppingCart($event)"
-    [isProductAvailable]="!(product.quantityLeft > 0)"
-    [isProductRemovable]="!shoppingCart.includes(product)"
-  ></app-product>
+  <ng-container *ngIf="filteredProducts.length === 0; else elseProduct">
+    <app-product
+      *ngFor="let product of products"
+      [product]="product"
+      (addProduct)="onAddToShoppingCart($event)"
+      (removeProduct)="onRemoveFromShoppingCart($event)"
+      [isProductAvailable]="!(product.quantityLeft > 0)"
+      [isProductRemovable]="!shoppingCart.includes(product)"
+    ></app-product>
+  </ng-container>
+
+  <ng-template #elseProduct>
+    <app-product
+      *ngFor="let product of filteredProducts"
+      [product]="product"
+      (addProduct)="onAddToShoppingCart($event)"
+      (removeProduct)="onRemoveFromShoppingCart($event)"
+      [isProductAvailable]="!(product.quantityLeft > 0)"
+      [isProductRemovable]="!shoppingCart.includes(product)"
+    ></app-product>
+  </ng-template>
 </div>
