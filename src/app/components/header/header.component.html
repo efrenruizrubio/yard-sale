@@ -20,7 +20,7 @@
         </li>
       </ul>
     </nav>
-    <button class="header__aside__button" (click)="toggleMenu()"></button>
+    <button class="header__button" (click)="toggleMenu()"></button>
   </aside>
   <button *ngIf="screenWidth < 768" class="nav-toggle" (click)="toggleMenu()">
     <span [class.nav-open]="isMenuOpen" class="hamburger"></span>
@@ -91,14 +91,11 @@
               </button>
             </div>
           </div>
-          <button
-            class="cart__list__element__modal__button"
-            (click)="toggleRemoveMenu()"
-          ></button>
+          <button class="header__button" (click)="toggleRemoveMenu()"></button>
         </div>
       </div>
     </nav>
-    <button class="header__aside__button" (click)="toggleCartList()"></button>
+    <button class="header__button" (click)="toggleCartList()"></button>
   </aside>
   <div class="cart" [class.nav-open]="isMenuOpen">
     <button class="cart__button" (click)="toggleCartList()">

@@ -11,6 +11,16 @@
   background-color: var(--white);
   border-bottom: 1px solid var(--very-light-pink);
 
+  &__button {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: none;
+    border: none;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+
   &__aside {
     display: flex;
     position: fixed;
@@ -18,28 +28,15 @@
     visibility: hidden;
     transition: all 250ms ease-in-out;
     transform: translateX(100%);
+    justify-content: flex-end;
     will-change: transform, visibility;
     &.aside-left {
       justify-content: flex-start;
       transform: translateX(-100%);
     }
-    &.aside-right {
-      justify-content: flex-end;
-      transform: translateX(100%);
-    }
     &.nav-open {
       visibility: visible;
       transform: translateX(0%);
-    }
-
-    &__button {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: none;
-      border: none;
-      -webkit-backdrop-filter: blur(2px);
-      backdrop-filter: blur(2px);
     }
   }
   &__nav {
@@ -52,14 +49,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-
-      list-style: none;
       &__element {
         &__button {
           padding: 1rem 2rem;
           background: none;
           border: none;
-          font-family: var(--ff-main);
           color: var(--very-light-pink);
           &.active {
             border: 1px solid var(--very-light-pink);
@@ -110,10 +104,8 @@
           border: none;
           border-radius: 0.5rem;
           background: var(--dark);
-          font-family: var(--ff-main);
           font-weight: var(--fw-bold);
           color: var(--hospital-green);
-          cursor: pointer;
           &:hover {
             color: var(--remove);
           }
@@ -127,15 +119,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-          }
-          &__button {
-            -webkit-backdrop-filter: blur(2px);
-            backdrop-filter: blur(2px);
-            background: transparent;
-            border: none;
-            position: fixed;
-            inset: 0;
-            z-index: -1;
           }
           &__popup {
             display: flex;
@@ -159,10 +142,8 @@
               &__button {
                 padding: 1rem 2rem;
                 border: none;
-                font-family: var(--ff-main);
                 font-size: var(--fs-medium);
                 color: var(--white);
-                cursor: pointer;
                 &.button--yes {
                   background-color: var(--remove);
                 }
@@ -191,7 +172,6 @@
     &__button {
       background: none;
       border: none;
-      cursor: pointer;
     }
   }
 }
@@ -251,11 +231,5 @@
         border-color: var(--hospital-green);
       }
     }
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .header__user {
-    font-family: var(--ff-main);
   }
 }
